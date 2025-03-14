@@ -23,4 +23,6 @@ router.post("/login", [
   ],loginUser);
 
   router.get("/profile",userAuth,userProfileData)
+
+  
 export default router;
