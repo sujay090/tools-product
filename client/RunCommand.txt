@@ -1,0 +1,17 @@
+Install tailwindcss and @tailwindcss/cli via npm.
+
+npm install tailwindcss @tailwindcss/cli
+
+
+Add the @import "tailwindcss"; import to your main CSS file.
+create css files =>
+./assets/css/input.css
+./assets/css/output.css
+./assets/css/customCss.css
+
+in input.css past it =>
+@import "tailwindcss";
+
+Run the CLI tool to scan your source files for classes and build your CSS.
+
+npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch
