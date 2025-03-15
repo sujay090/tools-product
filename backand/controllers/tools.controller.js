@@ -1,6 +1,5 @@
 import { validationResult } from "express-validator";
 import sharp from "sharp";
-import fs from "fs";
 
 export async function uploadFile(req, res, next) {
   const errors = validationResult(req);
@@ -69,4 +68,3 @@ export async function uploadFile(req, res, next) {
       .json({ message: "Error processing image", error: err.message });
   }
 }
-
