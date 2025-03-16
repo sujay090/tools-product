@@ -1,0 +1,46 @@
+
+-------------------- Must Read Before Working -----------------------
+
+************************************************************************************** IMPORTENT *********************************
+                                                    VS CODE |
+                                                    Use " GIT bash " for better Command
+********************************************************************* IMPORTENT ********************************************
+
+
+At first Clone this Project
+Command:-
+git clone https://github.com/sujay090/tools-product.git
+
+Go This Project
+Command:-
+cd .\tools-product\
+
+See Branch List
+Command:-
+git branch 
+
+Create Your Branch
+Command:-
+git switch -c <your_branch_name>
+
+<<<--- Edit Your Work --->>>
+abcd
+<<<--- End Your Work --->>>
+
+Add Your Work
+Command:-
+git add .     |        git add spesifick_file.txt name.txt 
+
+Commit your Eork
+Command:-
+git commit -m "Spesifick Feature added"
+
+Push Your Work
+Command:-
+git push -u origin <your_branch_name>
+
+***************************** IMPORTENT ****************************
+
+                            Message The Group
+
+**************************** IMPORTENT *******************************
