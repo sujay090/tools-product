@@ -3,10 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tool Project</title>
     <link rel="stylesheet" href="./assets/css/output.css" />
+    <link rel="stylesheet" href="./assets/css/cutomCss.css" />
+    <title>QuickDaily</title>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline text-red-800">Hello world!</h1>
+    <div>
+      <header
+        class="flex items-center justify-between px-6 py-3 shadow-md bg-white"
+      >
+        <div class="flex items-center space-x-3">
+          <!-- <button id="menu-button" class="md:hidden p-2">☰</button> -->
+          <div
+            class="w-6 h-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-purple-500 rounded-md"
+          ></div>
+          <span class="text-lg font-bold">QuickDaily</span>
+          <nav class="hidden md:flex space-x-4">
+            <a href="#" class="text-gray-600 hover:text-black">Tools ▼</a>
+            <a href="#" class="text-gray-600 hover:text-black">Compress</a>
+            <a href="#" class="text-gray-600 hover:text-black">Convert</a>
+            <a href="#" class="text-gray-600 hover:text-black">Merge</a>
+            <!-- <a href="#" class="text-gray-600 hover:text-black">Edit</a>
+            <a href="#" class="text-gray-600 hover:text-black">Sign</a>
+            <a href="#" class="text-gray-600 hover:text-black">AI PDF</a> -->
+          </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="md:hidden text-gray-600 hover:text-black"
+            >Tools ▼</a
+          >
+          <a href="#" class="text-gray-600 hover:text-black">Log In</a>
+          <a
+            href="#"
+            class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+            >Sign Up</a
+          >
+          <button id="menu-button" class="md:hidden p-2">☰</button>
+        </div>
+      </header>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg p-5 mobile-menu"
+      >
+        <button id="close-menu" class="absolute top-3 right-3">✕</button>
+        <ul class="mt-10 space-y-4">
+          <li><a href="#" class="block text-gray-700">Image Translator</a></li>
+          <li><a href="#" class="block text-gray-700">JPG To Word</a></li>
+          <li><a href="#" class="block text-gray-700">PDF To Word</a></li>
+          <li><a href="#" class="block text-gray-700">PDF To Text</a></li>
+          <li class="border-t pt-4">
+            <a href="#" class="block text-gray-700">Log In</a>
+          </li>
+          <li><a href="#" class="block text-gray-700">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
