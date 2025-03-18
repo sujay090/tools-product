@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.marginLeftRight {
+    @apply mr-10 ml-10
+}
+.footerMargin{
+    @apply mr-3 ml-3
+}

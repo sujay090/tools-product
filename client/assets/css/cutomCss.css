@@ -1,0 +1,12 @@
+/* Menu Controll Start*/
+/* Pritam */
+.mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+/* Menu Controll End*/
+/* Pritam */
