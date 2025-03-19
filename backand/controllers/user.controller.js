@@ -77,3 +77,8 @@ export async function loginUser(req, res, next) {
 export const userProfileData = (req, res) => {
   res.status(200).json(req.user);
 };
+
+export const logoutUser= (req,res)=>{
+  res.clearCookie("token")
+  res.status(200).json({message:"Logged out "})
+}
