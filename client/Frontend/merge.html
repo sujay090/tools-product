@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merge Tool | Tools_Hub</title>
+  <meta name="description" content="Merge multiple files into one easily using Tools_Hub. Fast and secure merging tool.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="merge.js" defer></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #f3f4f6, #ffffff);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="text-gray-800 min-h-screen flex flex-col font-sans">
+
+  <!-- Header Start -->
+  <header class="flex items-center justify-between px-7 py-4 shadow bg-white sticky top-0 z-50">
+    <div class="flex items-center space-x-3">
+      <div class="w-6 h-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-purple-500 rounded-md"></div>
+      <span class="text-lg font-bold">Tools_Hub <strong class="text-purple-600">.</strong></span>
+      <nav class="hidden md:flex space-x-4 relative">
+        <div class="relative group">
+          <button onclick="toggleDropdown()" class="text-gray-600 hover:text-black text-base font-medium">Tools ▼</button>
+          <div id="dropdownMenu" class="hidden absolute left-0 mt-2 w-40 bg-white border rounded-lg shadow z-10">
+            <a href="compress.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Compress</a>
+            <a href="convert.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Convert</a>
+            <a href="merge.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Merge</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+      <a href="index.html" class="text-gray-600 hover:text-black">Home</a>
+      <a href="#" class="text-gray-600 hover:text-black">Log In</a>
+      <a href="#" class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">Sign Up</a>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Main Section -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-3xl glass rounded-xl p-10">
+      <h1 class="text-3xl font-bold mb-4 text-center text-purple-700">Merge PDF Files</h1>
+      <p class="text-gray-600 mb-6 text-center">
+        Upload multiple PDF files to combine them into a single file. Drag & drop or select files.
+      </p>
+
+      <!-- Upload -->
+      <div class="mb-6">
+        <input id="file-input" type="file" multiple accept=".pdf" class="w-full border border-gray-300 p-3 rounded-md text-sm" />
+      </div>
+
+      <!-- File List -->
+      <ul id="file-list" class="text-sm text-gray-700 mb-4 hidden list-disc pl-5"></ul>
+
+      <!-- Merge Button -->
+      <div class="text-center">
+        <button id="merge-btn" class="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition disabled:opacity-50" disabled>
+          Merge Now
+        </button>
+      </div>
+
+      <!-- Loader -->
+      <div id="loader" class="mt-4 hidden flex justify-center">
+        <div class="relative w-12 h-12">
+          <div class="absolute inset-0 border-[6px] border-purple-300 border-t-purple-600 rounded-full animate-spin"></div>
+          <div class="absolute inset-1 bg-white rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-400 py-4 bg-white shadow-inner">
+    &copy; 2025 Tools_Hub. All rights reserved.
+  </footer>
+
+  <script src="./JS/merge.js"></script>
+</body>
+</html>

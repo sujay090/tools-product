@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compress Tool | Tools_Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+<!-- Header Start -->
+<header class="flex items-center justify-between px-7 py-4 shadow-md bg-white">
+  <div class="flex items-center space-x-3">
+    <div class="w-6 h-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-purple-500 rounded-md"></div>
+    <span class="text-lg font-bold">Tools_Hub <strong>.</strong></span>
+    <nav class="hidden md:flex space-x-4 relative">
+      <div class="relative group">
+        <button onclick="toggleDropdown()" class="text-gray-600 hover:text-black text-xl">Tools ▼</button>
+        <div id="dropdownMenu" class="hidden absolute left-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10 group-hover:block">
+          <a href="compress.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Compress</a>
+          <a href="convert.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Convert</a>
+          <a href="merge.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Merge</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <a href="index.html" class="text-gray-600 hover:text-black">Home</a>
+    <a href="#" class="text-gray-600 hover:text-black">Log In</a>
+    <a href="#" class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700">Sign Up</a>
+  </div>
+</header>
+<!-- Header End -->
+
+
+  <!-- Main Section -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-2xl bg-white shadow-lg rounded-xl p-8">
+      <h1 class="text-2xl font-bold mb-4">Compress Your File</h1>
+      <p class="text-gray-600 mb-6">
+        Upload an image or PDF file to compress it without much loss in quality.
+      </p>
+
+      <!-- Upload Area -->
+      <div id="upload-area"
+           class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 p-10 rounded-lg bg-gray-100 hover:bg-gray-200 transition relative cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="h-10 w-10 text-gray-400 mb-2"
+             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v6m0 0l-3-3m3 3l3-3M12 4v4m0 0l-3-3m3 3l3-3" />
+        </svg>
+        <p class="text-gray-500">Click to upload or drag and drop</p>
+        <input id="file-input" type="file" class="absolute inset-0 opacity-0 cursor-pointer" />
+      </div>
+
+      <!-- File Info -->
+      <div id="file-info" class="mt-4 text-sm text-gray-700 hidden"></div>
+
+      <!-- Compress Button -->
+      <div class="mt-6 text-center">
+        <button id="compress-btn"
+                class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
+                disabled>
+          Compress Now
+        </button>
+      </div>
+
+      <!-- Unique Loader -->
+      <div id="loader" class="hidden flex justify-center mt-6">
+        <div class="relative w-12 h-12">
+          <div class="absolute inset-0 rounded-full border-4 border-t-blue-500 border-b-transparent animate-spin"></div>
+          <div class="absolute inset-2 rounded-full bg-blue-100 animate-ping opacity-50"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-400 mb-4">
+    &copy; <span id="year"></span> Tools_Hub. All rights reserved.
+  </footer>
+
+  <!-- External Script -->
+  <script src="./JS/compress.js"></script>
+</body>
+</html>
