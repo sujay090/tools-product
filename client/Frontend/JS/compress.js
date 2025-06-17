@@ -1,97 +1,90 @@
-// Toggle desktop dropdown (Tools)
+// --- Tools Dropdown Toggle (Desktop) ---
 function toggleDropdown() {
-  const dropdown = document.getElementById("dropdownMenu");
-  dropdown.classList.toggle("hidden");
+  const menu = document.getElementById("dropdownMenu");
+  if (menu) {
+    menu.classList.toggle("hidden");
+  }
 }
 
-// Close dropdown if clicked outside (Desktop)
-document.addEventListener("click", function (event) {
-  const dropdown = document.getElementById("dropdownMenu");
-  const button = event.target.closest("button");
+// --- Hamburger Mobile Menu Toggle ---
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-  if (dropdown && !dropdown.contains(event.target) && !button) {
-    dropdown.classList.add("hidden");
+hamburger?.addEventListener('click', () => {
+  if (mobileMenu) {
+    mobileMenu.classList.toggle('hidden');
   }
 });
 
-// Mobile hamburger animation + toggle menu
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
+// --- Close Mobile Menu on Outside Click ---
+document.addEventListener('click', (e) => {
+  const target = e.target;
+  const isOutside = !hamburger?.contains(target) && !mobileMenu?.contains(target);
+  if (isOutside) {
+    mobileMenu?.classList.add('hidden');
+  }
+});
 
-  let isMenuOpen = false;
+// --- Theme Toggle (Dark/Light with Persistent Storage) ---
+const themeToggle = document.getElementById('theme-toggle');
+const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 
-  hamburger.addEventListener("click", function () {
-    mobileMenu.classList.toggle("hidden");
-    isMenuOpen = !isMenuOpen;
+function toggleTheme() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  updateThemeIcon();
+}
 
-    const bars = hamburger.querySelectorAll("div");
+function updateThemeIcon() {
+  const isDark = document.documentElement.classList.contains('dark');
+const icon = isDark ? '🌙' : '☀️';
+  if (themeToggle) themeToggle.textContent = icon;
+  if (themeToggleMobile) themeToggleMobile.textContent = icon;
+}
 
-    // Animate hamburger
-    if (isMenuOpen) {
-      bars[0].classList.add("rotate-45", "translate-y-1.5");
-      bars[1].classList.add("opacity-0");
-      bars[2].classList.add("-rotate-45", "-translate-y-1.5");
-    } else {
-      bars[0].classList.remove("rotate-45", "translate-y-1.5");
-      bars[1].classList.remove("opacity-0");
-      bars[2].classList.remove("-rotate-45", "-translate-y-1.5");
-    }
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply stored theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
 
-  // Close mobile menu on outside click
-  document.addEventListener("click", function (e) {
-    if (
-      isMenuOpen &&
-      !hamburger.contains(e.target) &&
-      !mobileMenu.contains(e.target)
-    ) {
-      mobileMenu.classList.add("hidden");
-      isMenuOpen = false;
+  updateThemeIcon();
 
-      const bars = hamburger.querySelectorAll("div");
-      bars[0].classList.remove("rotate-45", "translate-y-1.5");
-      bars[1].classList.remove("opacity-0");
-      bars[2].classList.remove("-rotate-45", "-translate-y-1.5");
-    }
-  });
+  themeToggle?.addEventListener('click', toggleTheme);
+  themeToggleMobile?.addEventListener('click', toggleTheme);
+});
 
-  // File Compression Logic
-  const fileInput = document.getElementById("file-input");
-  const fileInfo = document.getElementById("file-info");
-  const compressBtn = document.getElementById("compress-btn");
-  const loader = document.getElementById("loader");
+// --- File Upload & Compress Button ---
+const fileInput = document.getElementById('file-input');
+const fileInfo = document.getElementById('file-info');
+const compressBtn = document.getElementById('compress-btn');
+const loader = document.getElementById('loader');
 
-  let selectedFile = null;
-
-  fileInput.addEventListener("change", (e) => {
-    selectedFile = e.target.files[0];
-
-    if (selectedFile) {
-      fileInfo.classList.remove("hidden");
-      fileInfo.innerText = `Selected File: ${selectedFile.name} (${(selectedFile.size / 1024).toFixed(2)} KB)`;
-      compressBtn.disabled = false;
-    }
-  });
-
-  compressBtn.addEventListener("click", () => {
-    if (!selectedFile) {
-      alert("Please select a file first.");
-      return;
-    }
-
-    compressBtn.innerText = "Compressing...";
+fileInput?.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if (file) {
+    fileInfo.textContent = `File selected: ${file.name}`;
+    fileInfo.classList.remove('hidden');
+    compressBtn.disabled = false;
+  } else {
+    fileInfo.textContent = '';
+    fileInfo.classList.add('hidden');
     compressBtn.disabled = true;
-    loader.classList.remove("hidden");
+  }
+});
 
-    setTimeout(() => {
-      loader.classList.add("hidden");
-      compressBtn.innerText = "Compress Now";
-      compressBtn.disabled = false;
-      alert(`✅ ${selectedFile.name} compressed successfully!`);
-    }, 2000);
-  });
+compressBtn?.addEventListener('click', () => {
+  compressBtn.disabled = true;
+  loader.classList.remove('hidden');
+  fileInfo.textContent = 'Compressing...';
 
-  // Update year in footer
-  document.getElementById("year").textContent = new Date().getFullYear();
+  // Simulate compression (replace with actual logic later)
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    fileInfo.textContent = 'Compression complete ✅ (simulated)';
+    compressBtn.disabled = false;
+  }, 2000);
 });

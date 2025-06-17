@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,9 +9,14 @@
     <title>ToolsHub - Online PDF & File Utilities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="favicon.ico" />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+    </script>
   </head>
-  <body class="bg-[#F9FAFB] text-[#1F2937] font-sans">
 
+  <body class="bg-[#F9FAFB] text-[#1F2937] font-sans dark:bg-[#0F172A] dark:text-white">
     <!-- Header -->
     <header class="bg-[#1E2A38] text-white shadow-md sticky top-0 z-50">
       <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
@@ -21,74 +26,68 @@
           <span class="text-xl font-bold tracking-wide">ToolsHub</span>
         </div>
 
-        <!-- Desktop Menu -->
-        <nav class="hidden md:flex space-x-6 items-center">
-          <a href="index.html" class="hover:text-[#FF7E5F] transition">Home</a>
-          <a href="compress.html" class="hover:text-[#FF7E5F] transition">Compress</a>
-          <!-- <a href="convert.html" class="hover:text-[#FF7E5F] transition">Convert</a> -->
-          <!-- <a href="merge.html" class="hover:text-[#FF7E5F] transition">Merge</a> -->
-        </nav>
+        <!-- Right: Mobile -->
+        <div class="flex items-center space-x-4 md:hidden">
+          <!-- Theme Toggle for Mobile -->
+          <button id="theme-toggle" class="text-white text-xl">
+            🌞
+          </button>
 
-        <!-- Auth Buttons -->
-        <div class="hidden md:flex space-x-3">
-          <!-- <a href="#" class="hover:text-[#FF7E5F]">Login</a> -->
-          <!-- <a href="#" class="px-4 py-2 bg-[#FF7E5F] rounded-md text-white hover:bg-[#ff663e]">Sign Up</a> -->
+          <!-- Hamburger -->
+          <button id="menu-btn" class="focus:outline-none z-50 relative w-8 h-8">
+            <span class="block w-full h-0.5 bg-white mb-1 transition-all duration-300 origin-center" id="line1"></span>
+            <span class="block w-full h-0.5 bg-white mb-1 transition-all duration-300 origin-center" id="line2"></span>
+            <span class="block w-full h-0.5 bg-white transition-all duration-300 origin-center" id="line3"></span>
+          </button>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button id="menu-btn" class="md:hidden focus:outline-none z-50 relative w-8 h-8">
-          <span class="block w-full h-0.5 bg-white mb-1 transition-all duration-300 origin-center" id="line1"></span>
-          <span class="block w-full h-0.5 bg-white mb-1 transition-all duration-300 origin-center" id="line2"></span>
-          <span class="block w-full h-0.5 bg-white transition-all duration-300 origin-center" id="line3"></span>
-        </button>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center w-full relative justify-center">
+          <!-- Center Links -->
+          <nav class="flex space-x-6 items-center">
+            <a href="index.html" class="hover:text-[#FF7E5F] transition">Home</a>
+            <a href="compress.html" class="hover:text-[#FF7E5F] transition">Compress</a>
+          </nav>
+
+          <!-- Right: Theme Toggle (Desktop) -->
+          <button id="theme-toggle-desktop"
+            class="absolute right-0 text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white transition text-xl">
+            🌞
+          </button>
+        </div>
       </div>
 
-      <!-- Mobile Dropdown -->
-      <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 bg-[#1E2A38] text-white">
         <a href="index.html" class="block py-2 hover:text-[#FF7E5F]">Home</a>
         <a href="compress.html" class="block py-2 hover:text-[#FF7E5F]">Compress</a>
-        <!-- <a href="convert.html" class="block py-2 hover:text-[#FF7E5F]">Convert</a> -->
-        <!-- <a href="merge.html" class="block py-2 hover:text-[#FF7E5F]">Merge</a> -->
-        <div class="pt-2 border-t mt-2">
-          <!-- <a href="#" class="block py-2 hover:text-[#FF7E5F]">Login</a> -->
-          <!-- <a href="#" class="block mt-2 text-center py-2 bg-[#FF7E5F] text-white rounded-md hover:bg-[#ff663e]">Sign Up</a> -->
-        </div>
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="text-center py-20 px-6 bg-gradient-to-r from-[#FF7E5F] to-[#FEB47B] text-white">
+    <section class="text-center py-20 px-6 bg-gradient-to-r from-[#FF7E5F] to-[#FEB47B] text-white dark:from-[#FF7E5F] dark:to-[#FF9770]">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Smart Tools for Smart People</h1>
       <p class="text-lg mb-6">Compress, Convert, Merge your files in seconds. No signup needed.</p>
-      <a href="#tools" class="inline-block px-6 py-3 bg-white text-[#1E2A38] font-semibold rounded-lg shadow hover:bg-gray-100 transition">Explore Tools</a>
+      <a href="#tools" class="inline-block px-6 py-3 bg-white text-[#1E2A38] font-semibold rounded-lg shadow hover:bg-gray-100 transition">
+        Explore Tools
+      </a>
     </section>
 
     <!-- Tools Section -->
     <section id="tools" class="max-w-6xl mx-auto py-16 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300">
+      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300 dark:bg-[#1E293B]">
         <h3 class="text-xl font-semibold mb-2">Compress Files</h3>
-        <p class="text-sm text-gray-600 mb-4">Reduce file size without losing quality.</p>
+        <p class="text-sm text-gray-600 mb-4 dark:text-gray-300">Reduce file size without losing quality.</p>
         <a href="compress.html" class="text-[#FF7E5F] hover:underline">Use Tool →</a>
       </div>
-
-      <!-- <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Convert Formats</h3>
-        <p class="text-sm text-gray-600 mb-4">Convert PDF, images, and docs effortlessly.</p>
-        <a href="convert.html" class="text-[#FF7E5F] hover:underline">Use Tool →</a>
-      </div> -->
-
-      <!-- <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Merge PDFs</h3>
-        <p class="text-sm text-gray-600 mb-4">Combine multiple PDFs into a single file.</p>
-        <a href="merge.html" class="text-[#FF7E5F] hover:underline">Use Tool →</a>
-      </div> -->
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-6 text-sm text-gray-500 border-t">
+    <footer class="text-center py-6 text-sm text-gray-500 border-t dark:border-gray-700">
       &copy; 2025 ToolsHub. Crafted with ❤️ for productivity.
     </footer>
 
+    <!-- JS -->
     <script src="./JS/index.js"></script>
   </body>
 </html>

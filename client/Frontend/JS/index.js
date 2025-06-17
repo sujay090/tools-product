@@ -1,4 +1,4 @@
-// ✅ 4. Toggle Mobile Menu & Animate Hamburger Icon
+// ✅ Hamburger Menu Animation
 const menuBtn = document.getElementById("menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 
@@ -22,7 +22,6 @@ if (menuBtn && mobileMenu && line1 && line2 && line3) {
     line3.classList.toggle("-translate-y-1.5");
   });
 
-  // ✅ 5. Close menu if clicked outside
   document.addEventListener("click", (e) => {
     const isInside = menuBtn.contains(e.target) || mobileMenu.contains(e.target);
     if (!isInside && isOpen) {
@@ -35,3 +34,28 @@ if (menuBtn && mobileMenu && line1 && line2 && line3) {
     }
   });
 }
+
+// ✅ Theme Toggle for Mobile + Desktop
+const themeToggleMobile = document.getElementById("theme-toggle");
+const themeToggleDesktop = document.getElementById("theme-toggle-desktop");
+
+const toggleTheme = () => {
+  document.documentElement.classList.toggle("dark");
+
+  const isDark = document.documentElement.classList.contains("dark");
+  const icon = isDark ? "🌙" : "🌞";
+
+  if (themeToggleMobile) themeToggleMobile.textContent = icon;
+  if (themeToggleDesktop) themeToggleDesktop.textContent = icon;
+};
+
+if (themeToggleMobile) themeToggleMobile.addEventListener("click", toggleTheme);
+if (themeToggleDesktop) themeToggleDesktop.addEventListener("click", toggleTheme);
+
+// ✅ Set correct initial icon on load
+window.addEventListener("DOMContentLoaded", () => {
+  const isDark = document.documentElement.classList.contains("dark");
+  const icon = isDark ? "🌙" : "🌞";
+  if (themeToggleMobile) themeToggleMobile.textContent = icon;
+  if (themeToggleDesktop) themeToggleDesktop.textContent = icon;
+});
