@@ -1,121 +1,160 @@
 <!DOCTYPE html>
 <html lang="en" class="">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Compress Tool | Tools_Hub</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-  tailwind.config = {
-    darkMode: 'class'
-  }
-</script>
-
-
-
-  <link rel="icon" href="favicon.ico" />
-</head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col dark:bg-gray-900 dark:text-gray-100">
-
-<!-- Header Start -->
-<header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300 dark:bg-gray-800">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <!-- Left Side -->
-    <div class="flex items-center space-x-6">
-      <div class="flex items-center space-x-2">
-        <div class="w-6 h-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-purple-500 rounded-md"></div>
-        <span class="text-lg font-bold text-gray-800 dark:text-white">Tools_Hub<strong>.</strong></span>
-      </div>
-
-      <!-- Tools Dropdown (Desktop only) -->
-      <div class="hidden md:block relative">
-        <button onclick="toggleDropdown()" class="text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white text-base font-medium">
-          Tools ▼
-        </button>
-        <div id="dropdownMenu" class="hidden absolute mt-2 w-40 bg-white dark:bg-gray-700 border rounded-lg shadow-lg z-50">
-          <a href="compress.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Compress</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Compress PDF & images online free with ToolsHub. Reduce file size with minimal quality loss." />
+    <meta name="keywords" content="compress PDF online, image compression, reduce file size, ToolsHub" />
+    <meta name="author" content="ToolsHub Team" />
+    <meta property="og:title" content="Compress PDF & Images Free Online | ToolsHub" />
+    <meta property="og:description" content="Compress PDF & images online free with ToolsHub. Reduce file size with minimal quality loss." />
+    <meta property="og:url" content="https://yourdomain.com/compress.html" />
+    <meta property="og:type" content="website" />
+    <title>Compress PDF & Images Free Online | ToolsHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ToolsHub Compress",
+      "description": "Compress PDF and image files online for free with ToolsHub.",
+      "url": "https://yourdomain.com/compress.html",
+      "applicationCategory": "Utility",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FF7E5F',
+              secondary: '#FEB47B',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col dark:bg-gray-900 dark:text-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50 dark:bg-gray-800 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Left Side -->
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-md"></div>
+            <span class="text-xl font-bold text-gray-800 dark:text-white">ToolsHub</span>
+          </div>
+          <!-- Tools Dropdown (Desktop only) -->
+          <div class="hidden md:block relative">
+            <button id="tools-dropdown" class="hover:text-primary transition flex items-center">
+              Tools <span class="ml-1">▼</span>
+            </button>
+            <div id="dropdown-menu" class="hidden absolute mt-2 w-40 bg-white dark:bg-gray-700 border rounded-lg shadow-lg z-50">
+              <a href="compress.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Compress</a>
+            </div>
+          </div>
+        </div>
+        <!-- Right Side Desktop -->
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="index.html" class="hover:text-primary transition">Home</a>
+          <button id="theme-toggle" class="text-xl hover:text-primary transition" aria-label="Toggle theme">🌞</button>
+        </div>
+        <!-- Mobile Hamburger -->
+        <div class="md:hidden flex items-center space-x-4">
+          <button id="theme-toggle-mobile" class="text-xl hover:text-primary transition" aria-label="Toggle theme">🌞</button>
+          <button id="menu-btn" class="focus:outline-none z-50 relative w-8 h-8" aria-label="Toggle menu">
+            <span class="block w-full h-0.5 bg-gray-800 dark:bg-white mb-1 transition-all duration-300 origin-center" id="line1"></span>
+            <span class="block w-full h-0.5 bg-gray-800 dark:bg-white mb-1 transition-all duration-300 origin-center" id="line2"></span>
+            <span class="block w-full h-0.5 bg-gray-800 dark:bg-white transition-all duration-300 origin-center" id="line3"></span>
+          </button>
         </div>
       </div>
-    </div>
-
-    <!-- Right Side Desktop -->
-    <div class="hidden md:flex items-center space-x-4">
-      <a href="index.html" class="text-gray-600 dark:text-gray-200 hover:text-black dark:hover:text-white">Home</a>
-      <button id="theme-toggle" class="text-xl hover:text-black dark:hover:text-white transition">🌙</button>
-    </div>
-
-    <!-- Mobile Hamburger -->
-    <div class="md:hidden flex items-center space-x-2">
-      <button id="theme-toggle-mobile" class="text-xl">🌙</button>
-      <button id="hamburger" class="space-y-1 ml-4">
-        <div class="w-6 h-0.5 bg-gray-800 dark:bg-white transition-all origin-top-left"></div>
-        <div class="w-6 h-0.5 bg-gray-800 dark:bg-white transition-all"></div>
-        <div class="w-6 h-0.5 bg-gray-800 dark:bg-white transition-all origin-bottom-left"></div>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-gray-800 rounded-b-lg shadow px-6 py-4 space-y-4">
-    <a href="index.html" class="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded">Home</a>
-    <a href="compress.html" class="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded">Compress</a>
-  </div>
-</header>
-<!-- Header End -->
-
-<!-- Main Section -->
-<main class="flex-grow flex items-center justify-center p-6">
-  <div class="w-full max-w-2xl bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8">
-    <h1 class="text-2xl font-bold mb-4">Compress Your File</h1>
-    <p class="text-gray-600 dark:text-gray-300 mb-6">Upload an image or PDF file to compress it without much loss in quality.</p>
-
-    <!-- Upload Area -->
-    <div id="upload-area"
-         class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-500 p-10 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition relative cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg"
-           class="h-10 w-10 text-gray-400 dark:text-gray-200 mb-2"
-           fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v6m0 0l-3-3m3 3l3-3M12 4v4m0 0l-3-3m3 3l3-3"/>
-      </svg>
-      <p class="text-gray-500 dark:text-gray-300">Click to upload or drag and drop</p>
-      <input id="file-input" type="file" class="absolute inset-0 opacity-0 cursor-pointer"/>
-    </div>
-
-    <!-- File Info -->
-    <div id="file-info" class="mt-4 text-sm text-gray-700 dark:text-gray-200 hidden"></div>
-
-    <!-- Compress Button -->
-    <div class="mt-6 text-center">
-      <button id="compress-btn"
-              class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
-              disabled>
-        Compress Now
-      </button>
-    </div>
-
-    <!-- Loader -->
-    <div id="loader" class="hidden flex justify-center mt-6">
-      <div class="relative w-12 h-12">
-        <div class="absolute inset-0 rounded-full border-4 border-t-blue-500 border-b-transparent animate-spin"></div>
-        <div class="absolute inset-2 rounded-full bg-blue-100 animate-ping opacity-50 dark:bg-blue-400"></div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 rounded-b-lg shadow px-6 py-4 space-y-4">
+        <a href="index.html" class="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded">Home</a>
+        <a href="compress.html" class="block text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded">Compress</a>
       </div>
-    </div>
-  </div>
-</main>
+    </header>
 
-<!-- Footer -->
-<footer class="text-center text-sm text-gray-400 mb-4 dark:text-gray-500">
-  &copy; <span id="year"></span> Tools_Hub. All rights reserved.
-</footer>
+    <!-- Main Section -->
+    <main class="flex-grow flex items-center justify-center p-6">
+      <div class="w-full max-w-2xl bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Compress PDF & Images Online Free</h1>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">Compress PDF and image files online for free. Reduce file size up to 70% with minimal quality loss.</p>
+        <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Why Compress with ToolsHub?</h2>
+        <!-- Upload Area -->
+        <div id="upload-area" class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-500 p-10 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition relative cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400 dark:text-gray-200 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v6m0 0l-3-3m3 3l3-3M12 4v4m0 0l-3-3m3 3l3-3"/>
+          </svg>
+          <p class="text-gray-500 dark:text-gray-300">Click to upload or drag and drop (PDF or Image)</p>
+          <input id="file-input" type="file" accept="image/*,application/pdf" class="absolute inset-0 opacity-0 cursor-pointer"/>
+        </div>
+        <!-- File Info -->
+        <div id="file-info" class="mt-4 text-sm text-gray-700 dark:text-gray-200 hidden"></div>
+        <!-- Compression Options -->
+        <div id="compression-options" class="mt-4 hidden">
+          <label for="compression-level" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-200">Compression Level: <span id="compression-percentage">50%</span></label>
+          <input type="range" id="compression-level" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-600" aria-label="Compression level" aria-valuenow="50"/>
+        </div>
+        <!-- Compress Button -->
+        <div class="mt-6 text-center">
+          <button id="compress-btn" class="px-8 py-3 text-lg bg-primary text-white rounded-md hover:bg-orange-700 disabled:opacity-50" disabled>Compress Now</button>
+        </div>
+        <!-- Loader and Progress -->
+        <div id="loader" class="hidden flex flex-col items-center mt-6">
+          <div class="relative w-12 h-12">
+            <div class="absolute inset-0 rounded-full border-4 border-t-primary border-b-transparent animate-spin"></div>
+            <div class="absolute inset-2 rounded-full bg-orange-100 animate-ping opacity-50 dark:bg-orange-400"></div>
+          </div>
+          <div id="progress-info" class="mt-2 text-sm text-gray-600 dark:text-gray-300"></div>
+        </div>
+        <!-- Before and After Section -->
+        <div id="before-after" class="mt-6 hidden">
+          <h2 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">Before and After</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
+              <h3 class="text-md font-medium text-gray-700 dark:text-gray-200 mb-2">Before</h3>
+              <img id="before-image" src="" alt="Original PDF or image before compression" class="w-full h-auto rounded-md"/>
+              <p id="before-size" class="mt-2 text-sm text-gray-600 dark:text-gray-300"></p>
+            </div>
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
+              <h3 class="text-md font-medium text-gray-700 dark:text-gray-200 mb-2">After</h3>
+              <img id="after-image" src="" alt="Compressed PDF or image after optimization" class="w-full h-auto rounded-md"/>
+              <p id="after-size" class="mt-2 text-sm text-gray-600 dark:text-gray-300"></p>
+            </div>
+          </div>
+        </div>
+        <!-- Download Button -->
+        <div id="download-area" class="mt-4 text-center hidden">
+          <button id="download-button" class="px-8 py-3 text-lg bg-primary text-white rounded-md shadow hover:bg-orange-700 hover:shadow-lg transition flex items-center justify-center mx-auto" aria-label="Download compressed file">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v6m0 0l-3-3m3 3l3-3"/>
+            </svg>
+            <span>Download Compressed File</span>
+          </button>
+        </div>
+      </div>
+    </main>
 
-<!-- External JS -->
-<script src="./JS/compress.js"></script>
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-400 mb-4 dark:text-gray-500 mt-auto">
+      &copy; <span id="year"></span> ToolsHub. All rights reserved. <a href="index.html" class="text-primary hover:underline">Back to Home</a>
+    </footer>
 
-<!-- Inline Script for Year -->
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-</body>
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
+    <script src="./JS/index.js"></script>
+    <script src="./JS/compress.js"></script>
+  </body>
 </html>
